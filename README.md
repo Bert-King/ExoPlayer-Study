@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-09-02 20:26:00
  * @LastEditors: BertKing
- * @LastEditTime: 2020-09-03 14:06:52
+ * @LastEditTime: 2020-09-03 14:46:24
  * @FilePath: /ExoPlayer-Study/README.md
  * @Description: 
 -->
@@ -34,6 +34,11 @@
 4. ProgressiveMediaSource for [常规的媒体文件](https://exoplayer.dev/progressive.html).
 
 
+除了上面提到的MediaSource，ExoPlayer库还为我们提供了
+* ConcatenatingMediaSource : 用于播放列表(支持添加，删除)
+* ClippingMediaSource: 用于裁剪，只播放视频的一部分
+* LoopingMediaSource:循环播放(推荐使用ExoPlayer的setRepeatMode)
+* MergingMediaSource:加载字幕文件
 
 
 
