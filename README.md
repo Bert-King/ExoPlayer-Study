@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-09-02 20:26:00
  * @LastEditors: BertKing
- * @LastEditTime: 2020-09-02 20:51:01
+ * @LastEditTime: 2020-09-03 10:42:29
  * @FilePath: /undefined/Users/bertking/Documents/GitHub/ExoPlayer-Study/README.md
  * @Description: 
 -->
@@ -17,7 +17,7 @@
 
 
 
-目前爱奇艺也是基于[ ExoPlayer ](https://github.com/google/ExoPlayer)封装的，采用Google家的相对有保证。正如标题所言，本项目的主角只有一个：ExoPlayer
+目前爱奇艺,Youtube都是基于[ ExoPlayer ](https://github.com/google/ExoPlayer)封装的，采用Google家的相对有保证。正如标题所言，本项目的主角只有一个：ExoPlayer
 
 ---
 
@@ -25,3 +25,11 @@
 1. 经常逛Youtube的朋友都知道，我们拖拽进度条的时候，会出现对应位置视频的缩略图(主流的播放器都有该功能)，我ExoPlayer库不支持该功能，需要自己实现。详情请参考: [Preview seekbar like youtube ](https://github.com/google/ExoPlayer/issues/5254)
 
 2. [画中画功能(PIP:Picture-in-Picture)](https://developer.android.com/guide/topics/ui/picture-in-picture#java)
+
+
+
+
+推荐链接:
+
+1. [Android音视频开发学习指南](https://zhuanlan.zhihu.com/p/28518637)
+2. [Android音视频开发学习系列文章](https://juejin.im/post/6844903949451919368)
