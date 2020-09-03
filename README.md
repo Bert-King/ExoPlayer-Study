@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-09-02 20:26:00
  * @LastEditors: BertKing
- * @LastEditTime: 2020-09-03 15:07:28
+ * @LastEditTime: 2020-09-03 15:12:56
  * @FilePath: /ExoPlayer-Study/README.md
  * @Description: 
 -->
@@ -129,3 +129,4 @@ PS: 建议运行Demo来理解。
 
 1. [Android音视频开发学习指南](https://zhuanlan.zhihu.com/p/28518637)
 2. [Android音视频开发学习系列文章](https://juejin.im/post/6844903949451919368)
+3. [ExoPlayer剖析](https://www.jianshu.com/p/f506c279e4e5)
