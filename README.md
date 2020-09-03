@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-09-02 20:26:00
  * @LastEditors: BertKing
- * @LastEditTime: 2020-09-03 11:54:37
+ * @LastEditTime: 2020-09-03 14:06:52
  * @FilePath: /ExoPlayer-Study/README.md
  * @Description: 
 -->
@@ -31,7 +31,7 @@
 1. DashMediaSource for [DASH](https://exoplayer.dev/dash.html).
 2. SsMediaSource for [SmoothStreaming](https://exoplayer.dev/smoothstreaming.html).
 3. HlsMediaSource for [HLS(HTTP Live Streaming)](https://exoplayer.dev/hls.html).
-4. ProgressiveMediaSource for [regular media files](https://exoplayer.dev/progressive.html).
+4. ProgressiveMediaSource for [常规的媒体文件](https://exoplayer.dev/progressive.html).
 
 
 
