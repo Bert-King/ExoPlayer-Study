@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-09-02 20:26:00
  * @LastEditors: BertKing
- * @LastEditTime: 2020-09-03 14:46:24
+ * @LastEditTime: 2020-09-03 15:07:28
  * @FilePath: /ExoPlayer-Study/README.md
  * @Description: 
 -->
@@ -28,10 +28,79 @@
 
 ### ExoPlayer中的Media Sources
 正如其 [文档](https://exoplayer.dev/media-sources.html) 上所言，在 ExoPlayer 中所有媒体文件都被**MediaSource类**所表示。另外ExoPlayer库内置了支持常见流类型的MediaSource的实现。
-1. DashMediaSource for [DASH](https://exoplayer.dev/dash.html).
-2. SsMediaSource for [SmoothStreaming](https://exoplayer.dev/smoothstreaming.html).
-3. HlsMediaSource for [HLS(HTTP Live Streaming)](https://exoplayer.dev/hls.html).
+1. DashMediaSource for [DASH(MPEG DASH，扩展名：mpd)](https://exoplayer.dev/dash.html).
+2. SsMediaSource for [SmoothStreaming 全称是:Microsoft Smooth Streaming,又简记为:MSS](https://exoplayer.dev/smoothstreaming.html).
+3. HlsMediaSource for [HLS(HTTP Live Streaming 扩展名:m3u8 苹果公司出品](https://exoplayer.dev/hls.html).
 4. ProgressiveMediaSource for [常规的媒体文件](https://exoplayer.dev/progressive.html).
+
+ExoPlayer为我们提供了工具类用于判断视频类型，使我们方便地选出正确的MediaSource类型。
+```Java
+  /**
+     * 
+     * @param uri 媒体文件的链接
+     * @param extension 扩展名
+     * @param drmSessionManager 版权管理(DRM:数字版权管理)
+     * @return 相应的MediaSource
+     */
+ private MediaSource createLeafMediaSource(
+            Uri uri, String extension, DrmSessionManager<?> drmSessionManager) {
+        @ContentType int type = Util.inferContentType(uri, extension);
+        switch (type) {
+            case C.TYPE_DASH:
+                return new DashMediaSource.Factory(dataSourceFactory)
+                        .setDrmSessionManager(drmSessionManager)
+                        .createMediaSource(uri);
+            case C.TYPE_SS:
+                return new SsMediaSource.Factory(dataSourceFactory)
+                        .setDrmSessionManager(drmSessionManager)
+                        .createMediaSource(uri);
+            case C.TYPE_HLS:
+                return new HlsMediaSource.Factory(dataSourceFactory)
+                        .setDrmSessionManager(drmSessionManager)
+                        .createMediaSource(uri);
+            case C.TYPE_OTHER:
+                return new ProgressiveMediaSource.Factory(dataSourceFactory)
+                        .setDrmSessionManager(drmSessionManager)
+                        .createMediaSource(uri);
+            default:
+                throw new IllegalStateException("Unsupported type: " + type);
+        }
+    }
+```
+
+我们紧接着来看一下Util.inferContentType()的实现,其实现逻辑还是很清晰的。
+
+```Java
+ /**
+   * Makes a best guess to infer the type from a file name.
+   *
+   * @param fileName Name of the file. It can include the path of the file.
+   * @return The content type.
+   */
+  @C.ContentType
+  public static int inferContentType(String fileName) {
+    fileName = toLowerInvariant(fileName);
+    if (fileName.endsWith(".mpd")) {
+      return C.TYPE_DASH;
+    } else if (fileName.endsWith(".m3u8")) {
+      return C.TYPE_HLS;
+    }
+    Matcher ismMatcher = ISM_URL_PATTERN.matcher(fileName);
+    if (ismMatcher.matches()) {
+      @Nullable String extensions = ismMatcher.group(2);
+      if (extensions != null) {
+        if (extensions.contains(ISM_DASH_FORMAT_EXTENSION)) {
+          return C.TYPE_DASH;
+        } else if (extensions.contains(ISM_HLS_FORMAT_EXTENSION)) {
+          return C.TYPE_HLS;
+        }
+      }
+      return C.TYPE_SS;
+    }
+    return C.TYPE_OTHER;
+  }
+```
+
 
 
 除了上面提到的MediaSource，ExoPlayer库还为我们提供了
