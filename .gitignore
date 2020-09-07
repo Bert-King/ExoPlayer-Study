@@ -85,3 +85,5 @@ lint/tmp/
 # lint/reports/
 StudyExoPlayer/core/buildout/*
 StudyExoPlayer/core/src/androidTest/*
+StudyExoPlayer/ui/buildout/*
+StudyExoPlayer/ui/src/androidTest/*
