@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-09-07 11:04:49
  * @LastEditors: BertKing
- * @LastEditTime: 2020-09-07 16:26:41
+ * @LastEditTime: 2020-09-07 16:53:32
  * @FilePath: /ExoPlayer-Study/关键概念.md
  * @Description: URI 和 URL的理解
 -->
@@ -16,7 +16,7 @@ URL：Uniform Resource Locator 统一资源**定位**符
 
 ---
 
-# URI 的理解
+# 第一部分:URI 的理解
 
 [统一资源标识符(URI)的定义](https://www.ietf.org/rfc/rfc2396.txt) 
 
@@ -28,11 +28,13 @@ URL：Uniform Resource Locator 统一资源**定位**符
 > 是用于识别抽象或者具体的资源的一个紧凑字符串，包括绝对和相对两种形式。
 
 
-[URI - Android开发者文档](https://developer.android.com/reference/java/net/URI) 加深对于URI的理解。
+[URI - 文档描述](https://developer.android.com/reference/java/net/URI) 加深对于URI的理解。
 
 [Java Class URI](https://docs.oracle.com/javase/10/docs/api/java/net/URI.html)
 
 ## URI的语法与组件
+
+URI 的scheme 定义了 URI的命名空间(namespace)，关于命名空间的作用在这里不再赘述。
 
 按照是否存在**scheme**可以将URI分为**绝对形式**和**相对形式**,具体内容如下：
 
@@ -54,7 +56,8 @@ URL根据scheme-specific-part是否以反斜杠(/)开头，将URI分为**Hierarc
 
 > 1. news:comp.lang.java
 > 2. mailto:nobody@google.com
-这些都属于Opaque URI。不需要进一步解析。
+>
+>这些都属于Opaque URI。不需要进一步解析。
 
 
 
@@ -94,3 +97,27 @@ authority = [user-info @] host [:port]
 ```
 很显然，**没有指定Scheme的都是URI的相对格式**。
 
+---
+
+# 第二部分:URL 的理解
+
+URL：Uniform Resource Locator 统一资源**定位**符
+
+URN:Uniform Resource Name 统一资源名称
+
+[URL-文档描述](https://developer.android.com/reference/java/net/URL)
+
+URI帮我们确定资源后，我们就可以对该资源进行多种操作:访问，更新，替换以及查找属性。所以URI进一步分为:定位器(Locator)，名称(Name)或兼而有之。
+
+这就是URL 和 URN的由来。
+
+* URL 是 URI的子集：根据其访问权限来标识资源。
+
+* URN 是 URI的子集：保持资源的全局唯一性和持久性(即使资源不存在 or 不可用)
+
+
+----
+
+# 最后
+
+[RFC 2396: Uniform Resource Identifiers (URI): Generic Syntax](https://www.ietf.org/rfc/rfc2396.txt) 这篇文章已经帮你更好滴理解URI。
