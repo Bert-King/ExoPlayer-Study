@@ -20,7 +20,7 @@
 目前爱奇艺,Youtube都是基于[ ExoPlayer ](https://github.com/google/ExoPlayer)封装的，采用Google家的相对有保证。正如标题所言，本项目的主角只有一个：ExoPlayer
 
 ---
-##  ExoPlayer的概论
+##  1. ExoPlayer的概论
 
 1. [ExoPlayer的Github地址](https://github.com/google/ExoPlayer)
 2. [开发者文档](https://exoplayer.dev/hello-world.html)
@@ -32,6 +32,14 @@
 2. SsMediaSource for [SmoothStreaming 全称是:Microsoft Smooth Streaming,又简记为:MSS](https://exoplayer.dev/smoothstreaming.html).
 3. HlsMediaSource for [HLS(HTTP Live Streaming 扩展名:m3u8 苹果公司出品](https://exoplayer.dev/hls.html).
 4. ProgressiveMediaSource for [常规的媒体文件](https://exoplayer.dev/progressive.html).
+
+
+## 2. 流媒体类型的历史
+
+最初，流媒体协议也是呈现三足鼎立之势，分别是Adobe家的[HDS-HTTP Dynamic Streaming](https://www.encoding.com/http-dynamic-streaming-hds/),微软家的[(M)SS- Microsoft Smooth Streaming](https://www.encoding.com/microsoft-smooth-streaming-mss/)以及苹果家的[HLS-HTTP Live Streaming](https://www.encoding.com/http-live-streaming-hls/). 每家都有自己的协议和格式，为了结束这种混乱的局面，[MPEG-DASH](https://www.encoding.com/mpeg-dash/)应运而生。
+
+
+---
 
 ExoPlayer为我们提供了工具类用于判断视频类型，使我们方便地选出正确的MediaSource类型。
 ```Java
