@@ -18,6 +18,7 @@ package com.google.android.exoplayer2.upstream.cache;
 import com.google.android.exoplayer2.C;
 
 /**
+ * 缓存清除策略
  * Evicts data from a {@link Cache}. Implementations should call {@link Cache#removeSpan(CacheSpan)}
  * to evict cache entries based on their eviction policies.
  */
