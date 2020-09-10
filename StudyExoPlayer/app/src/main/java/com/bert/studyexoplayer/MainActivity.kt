@@ -31,13 +31,17 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         btn_cache?.setOnClickListener {
             startActivity(Intent(context, CacheActivity::class.java))
         }
+
+        btn_cover?.setOnClickListener {
+            startActivity(Intent(context,CoverActivity::class.java))
+        }
     }
 
     private fun initPlayer() {
         val mp4MediaSource = ProgressiveMediaSource.Factory(dataSourceFactory)
             .createMediaSource(Uri.parse(URLs.mp4Url))
         simpleExoPlayer.prepare(mp4MediaSource)
-        simpleExoPlayer.playWhenReady = true
+        simpleExoPlayer.playWhenReady = false
         player_view?.player = simpleExoPlayer
     }
 
