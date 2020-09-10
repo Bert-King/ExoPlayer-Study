@@ -87,3 +87,6 @@ StudyExoPlayer/core/buildout/*
 StudyExoPlayer/core/src/androidTest/*
 StudyExoPlayer/ui/buildout/*
 StudyExoPlayer/ui/src/androidTest/*
+StudyExoPlayer/hls/buildout/*
+StudyExoPlayer/hls/src/androidTest/*
+StudyExoPlayer/hls/src/test/*
