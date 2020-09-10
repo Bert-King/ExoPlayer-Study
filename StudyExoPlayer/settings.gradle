@@ -1,3 +1,4 @@
+include ':hls'
 include ':ui'
 include ':core'
 include ':app'
