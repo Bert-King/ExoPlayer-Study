@@ -34,6 +34,7 @@ class CacheActivity : BaseActivity(R.layout.activity_cache) {
 
         // 指定缓存文件夹
         val cacheFile = File(this.cacheDir, "media")
+
         // 指定缓存大小以及移除策略
         evictor = LeastRecentlyUsedCacheEvictor(100 * 1024 * 1024)
 
@@ -42,7 +43,6 @@ class CacheActivity : BaseActivity(R.layout.activity_cache) {
         // 建立缓存
         simpleCache = SimpleCache(cacheFile, evictor, databaseProvider)
 
-
         // 建立 开启缓存的Data source factory,如果数据在缓存中可用，则直接返回，否则将会打开一个新的链接去拉取数据
         cacheDataSourceFactory = CacheDataSourceFactory(
             simpleCache,
@@ -50,7 +50,6 @@ class CacheActivity : BaseActivity(R.layout.activity_cache) {
         )
 
         val uri = Uri.parse(URLs.mp4Url)
-
         val mp4MediaSource = ProgressiveMediaSource.Factory(cacheDataSourceFactory)
             .createMediaSource(uri)
 
