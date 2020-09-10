@@ -1,4 +1,4 @@
-package com.bert.studyexoplayer
+package com.bert.studyexoplayer.util
 
 /**
  *
