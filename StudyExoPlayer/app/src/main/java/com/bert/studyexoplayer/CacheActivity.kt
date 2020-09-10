@@ -1,10 +1,11 @@
 package com.bert.studyexoplayer
 
 import android.net.Uri
+import com.bert.studyexoplayer.util.URLs
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.database.DatabaseProvider
 import com.google.android.exoplayer2.database.ExoDatabaseProvider
-import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.source.hls.HlsMediaSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory
 import com.google.android.exoplayer2.upstream.cache.LeastRecentlyUsedCacheEvictor
@@ -29,7 +30,7 @@ class CacheActivity : BaseActivity(R.layout.activity_cache) {
     lateinit var databaseProvider: DatabaseProvider
 
 
-    override fun init(){
+    override fun init() {
         simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
 
         // 指定缓存文件夹
@@ -49,13 +50,31 @@ class CacheActivity : BaseActivity(R.layout.activity_cache) {
             DefaultHttpDataSourceFactory("ExoPlayer")
         )
 
-        val uri = Uri.parse(URLs.mp4Url)
-        val mp4MediaSource = ProgressiveMediaSource.Factory(cacheDataSourceFactory)
+        val uri = Uri.parse(URLs.m3u8Url)
+        val mediaSource = HlsMediaSource.Factory(cacheDataSourceFactory)
             .createMediaSource(uri)
 
-        simpleExoPlayer.prepare(mp4MediaSource)
+        simpleExoPlayer.prepare(mediaSource)
         player_view?.player = simpleExoPlayer
         simpleExoPlayer.playWhenReady = true
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        simpleCache.release()
     }
 
     override fun initViews() {
@@ -63,5 +82,7 @@ class CacheActivity : BaseActivity(R.layout.activity_cache) {
 
         }
     }
+
+
 
 }
