@@ -3,6 +3,7 @@ package com.bert.studyexoplayer
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.bert.studyexoplayer.util.LogUtil
 
 /**
  *
@@ -32,4 +33,8 @@ abstract class BaseActivity(var contentLayoutId: Int) : AppCompatActivity(conten
     abstract fun init()
 
     abstract fun initViews()
+
+    open fun debug(msg:String){
+        LogUtil.debug(TAG,msg)
+    }
 }
