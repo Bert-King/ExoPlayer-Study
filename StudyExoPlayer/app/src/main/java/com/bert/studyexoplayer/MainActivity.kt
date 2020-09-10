@@ -3,6 +3,7 @@ package com.bert.studyexoplayer
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import com.bert.studyexoplayer.util.URLs
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DataSource
@@ -50,7 +51,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         super.onResume()
         Log.d(TAG, "------onResume-------")
         if (Util.SDK_INT <= 23) {
-            initPlayer()
+//            initPlayer()
             player_view?.onResume()
         }
 
@@ -60,8 +61,9 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         super.onStart()
         Log.d(TAG,"------onStart-------")
         if (Util.SDK_INT > 23) {
-            initPlayer()
+//            initPlayer()
             player_view?.onResume()
+            simpleExoPlayer.playWhenReady = true
         }
     }
 
@@ -71,7 +73,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 
         if (Util.SDK_INT <= 23) {
             player_view?.onPause()
-//            simpleExoPlayer.release()
+            simpleExoPlayer.stop()
         }
 
     }
@@ -81,6 +83,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         Log.d(TAG, "------onStop-------")
         if (Util.SDK_INT > 23) {
             player_view?.onPause()
+            simpleExoPlayer.playWhenReady = false
 //            simpleExoPlayer.release()
         }
     }
@@ -89,5 +92,6 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         super.onDestroy()
         Log.d(TAG, "------onDestroy-------")
         player_view?.overlayFrameLayout?.removeAllViews()
+        simpleExoPlayer.release()
     }
 }
