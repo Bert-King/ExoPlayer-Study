@@ -30,6 +30,8 @@ class CacheActivity : BaseActivity(R.layout.activity_cache) {
     lateinit var databaseProvider: DatabaseProvider
 
 
+
+
     override fun init() {
         simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
 
