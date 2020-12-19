@@ -1,8 +1,8 @@
 package com.bert.studyexoplayer
 
 import android.net.Uri
-import android.view.View
 import com.bert.studyexoplayer.util.URLs
+import com.bert.studyexoplayer.util.Utils
 import com.bumptech.glide.Glide
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.Player
@@ -82,27 +82,7 @@ class CoverActivity : BaseActivity(R.layout.activity_cover) {
     inner class PlayerEventListener : Player.EventListener {
 
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-            when (playbackState) {
-                Player.STATE_READY -> {
-                    debug("视频可立即播放")
-                    iv_cover?.visibility = View.GONE
-                }
-                Player.STATE_BUFFERING -> {
-                    debug("视频缓冲中...")
-                }
-
-                Player.STATE_ENDED -> {
-                    debug("播放结束")
-                }
-
-                Player.STATE_IDLE -> {
-                    debug("无播放资源")
-                }
-
-                else -> {
-                    debug("未知状态")
-                }
-            }
+            debug(Utils.getPlaybackStateText(playbackState))
         }
 
         override fun onLoadingChanged(isLoading: Boolean) {

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import com.bert.studyexoplayer.util.URLs
+import com.bert.studyexoplayer.util.Utils
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DataSource
@@ -29,6 +30,9 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     }
 
     override fun initViews() {
+        tv_speed?.text = Utils.getNetSpeed(context).toString()
+
+
         btn_cache?.setOnClickListener {
             startActivity(Intent(context, CacheActivity::class.java))
         }
